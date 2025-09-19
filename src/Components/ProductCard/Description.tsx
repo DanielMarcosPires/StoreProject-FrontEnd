@@ -1,11 +1,11 @@
 import React, { ComponentProps } from 'react'
 import AddToCard from '../AddToCard/AddToCard'
 
-export default function Description({children}:ComponentProps<"div">) {
+
+export default function Description({children, className}:ComponentProps<"div">) {
   return (
-    <div className='flex justify-center'>
-        <AddToCard>Add to Card</AddToCard>
-        <>{children}</>
+    <div className={className}>
+        {children}
     </div>
   )
 }

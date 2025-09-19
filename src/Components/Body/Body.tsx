@@ -1,17 +1,22 @@
 import React, { ComponentProps } from 'react'
 import Header from '../Header/Header'
 import { ProductCard } from '../ProductCard'
+import { FastAPI } from '@/API/Python'
+import ProductsList from '../ProductsList/ProductsList'
 
-export default function Body({className}:ComponentProps<"main">) {
+export default function Body({ className }: ComponentProps<"main">) {
+
   return (
     <main className={className}>
-      <Header className='border'/>
-      <ProductCard.index className="flex flex-col items-center border w-[300px]">
-       <ProductCard.Background src="/images/image-brownie-desktop.jpg" alt=''/>
-       <ProductCard.Description>
-         <span>Waffle</span>
-       </ProductCard.Description>
-      </ProductCard.index>
+      <Header className='p-4' />
+
+      <section className='flex'>
+        <ProductsList />
+        <div></div>
+      </section>
+
+
+
     </main>
   )
 }
