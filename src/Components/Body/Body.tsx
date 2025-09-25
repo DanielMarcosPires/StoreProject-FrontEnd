@@ -12,7 +12,9 @@ export default function Body({ className }: ComponentProps<"main">) {
 
       <section className='flex'>
         <ProductsList />
-        <div></div>
+        <div className='bg-white w-2/4 full h-[300px] p-4'>
+          <h2 className='text-2xl font-bold text-orange-500'>Your cart</h2>
+        </div>
       </section>
 
 
