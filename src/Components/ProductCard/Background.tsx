@@ -1,10 +1,11 @@
 import React, { ComponentProps } from 'react'
-import AddToCard from '../AddToCard/AddToCard'
+import {AddToCard} from '../AddToCard/Index'
+import { productSchema } from '../ProductsList/ProductsList'
 
 
 interface BackgroundProps extends ComponentProps<"img"> {
   QuantityMax: number,
-  InfoProduct: number
+  InfoProduct: productSchema
 }
 export default function Background({ QuantityMax, InfoProduct, ...props }: BackgroundProps) {
   return <div className='flex flex-col items-center relative'>

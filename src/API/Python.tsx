@@ -14,6 +14,13 @@ interface postCard {
 interface getProducts {
     searchID: string
 }
+interface products {
+    id:number,
+    name:string,
+    category:string,
+    value:number
+}
+type payloadProducts = Omit<products,'id'>
 
 export class FastAPI {
     private instance = axios.create({
@@ -31,7 +38,7 @@ export class FastAPI {
     async getProducts({ searchID }: getProducts) {
         try {
             const { data } = await this.instance.get("/api/products", {
-                data: { searchID: "" }
+                params: { searchID:"" }
             })
             return data
         } catch (error) {
@@ -51,7 +58,7 @@ export class FastAPI {
             const { data } = await this.instance.post("/api/cart", {
                 product_id: id,
                 quantidade: quantidade
-            })
+            } as postCard)
 
             return data
         } catch (error) {
@@ -64,7 +71,7 @@ export class FastAPI {
                 data: {
                     product_id: id,
                     quantidade: quantidade
-                }
+                } as postCard
             })
             return data
         } catch (error) {

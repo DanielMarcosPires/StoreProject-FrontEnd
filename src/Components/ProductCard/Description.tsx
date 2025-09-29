@@ -1,5 +1,5 @@
 import React, { ComponentProps } from 'react'
-import AddToCard from '../AddToCard/AddToCard'
+import {AddToCard} from '../AddToCard/Index'
 
 
 export default function Description({children, className}:ComponentProps<"div">) {
