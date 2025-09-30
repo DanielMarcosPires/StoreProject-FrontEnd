@@ -164,34 +164,26 @@ export function ProductProvider({children}: {children: ReactNode}) {
      */
    
 const removeFromCart = (productId: number) => {
-    setCart((prevCart) => { 
-        console.log("Inicio")
-        const itemToRemove = prevCart.find(item => item.id === productId);
-        console.log("Teste")
-        if(itemToRemove){
-            // Restaurar a quantidade ao estoque
+    // Primeiro, encontre o item no carrinho
+    const existingItem = cart.find(item => item.id === productId);
 
-            
-            setProducts((prevProducts) => {
-                const teste = prevProducts.map(product => 
-                        product.id === productId
-                            ? console.log(`quantity: ${product.quantity} + ${itemToRemove.cartQuantity} `): product
-                    )
-                return prevProducts.map(product => 
-                    product.id === productId
-                        ? { 
-                            ...product, 
-                            quantity: product.quantity + itemToRemove.cartQuantity 
-                          }
-                        : product
-                )
-            });
-        }
-        
-        // Remover o item do carrinho
-        console.log("Fim")
-        return prevCart.filter(item => item.id !== productId);
-    });
+    if (existingItem) {
+        // Restaurar a quantidade ao estoque
+        setProducts((prevProducts) => {
+            let cartQuantity = existingItem.cartQuantity;
+            return prevProducts.map(product => 
+                product.id === productId
+                    ? { 
+                        ...product, 
+                        quantity: product.quantity + cartQuantity
+                      }
+                    : product
+            );
+        });
+    }
+
+    // Agora remova do carrinho
+    setCart((prevCart) => prevCart.filter(item => item.id !== productId));
 }
     /**
      * O Provider.value contém TUDO que os componentes filhos podem acessar.

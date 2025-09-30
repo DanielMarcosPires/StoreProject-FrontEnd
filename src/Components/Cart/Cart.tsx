@@ -15,11 +15,10 @@ interface itemCardSchema {
 
 function ItemCart() {
     const {cart, removeFromCart} = useProduct()
-
+    console.log(cart)
     return (
         <ul>
-
-             {cart.map((item: any) => (
+             {cart.map((item: itemCardSchema) => (
                 <li key={item.id} className='flex justify-between border-b py-2'>
                     <div>
                         <header>

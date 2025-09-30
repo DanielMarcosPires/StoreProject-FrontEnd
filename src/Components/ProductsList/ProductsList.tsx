@@ -34,8 +34,8 @@ export default function ProductsList({ productList }: ProductsListProps) {
     }
 
     function setupWebSocket() {
-         const socket = new WebSocket("ws://127.0.0.1:8000/api/ws");
-
+        const socket = new WebSocket("ws://127.0.0.1:8000/api/ws");
+        
         socket.onopen = () => {
             console.log("Conectado ao servidor WebSocket");
         };

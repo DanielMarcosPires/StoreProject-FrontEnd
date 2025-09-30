@@ -27,18 +27,20 @@ export function AddToCard({ children, InfoProduct: IDproduct, Quantity }: AddToC
         const currentCartQuantity = getCartQuantity();
         const currentStock = getCurrentStock();
 
-        console.log("----------------------------");
-        console.log("Estoque atual do produto:", currentStock);
-        console.log("Quantidade atual no carrinho:", currentCartQuantity);
-        console.log("Estoque original:", IDproduct.quantity);
-        console.log("Pode adicionar mais?", currentStock > 0);
-        console.log("----------------------------");
-
+        console.table(
+            [
+                {
+                    Action:"Adicionar ao carrinho",
+                    Product:IDproduct.name,
+                    EstoqueAtual:currentStock,
+                    EstoqueOriginal:IDproduct.quantity, 
+                    QuantidadeNoCarrinho:currentCartQuantity,
+                    PodeAdicionarMais:currentStock > 0,
+                }
+            ]);
 
         if(currentStock > 0){
-
             addToCart(IDproduct);
-
             try {
                 const api = new FastAPI();
                 console.log({
